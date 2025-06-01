@@ -29,5 +29,5 @@ class TransformerEncoderLayer(nn.Module):
 
     def forward(self, input):
         input = self.layer_norm(input)
-        input = self.msa_dropout(self.msa(input, input, input)[0]) + input
+        input = self.msa_dropout(self.msa(input, input, input)) + input
         return self.mlp(input) + input
