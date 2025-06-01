@@ -49,10 +49,8 @@ class ViT(nn.Module):
         transfomer_out = self.transformer(self.patch_embedding(image))
         return self.classifier(transfomer_out[:, 0]) # only the [class] state is used as input
 
-model = ViT(n_classes=10, )
-
-
 if __name__ == '__main__':
+    model = ViT(n_classes=10, )
     print(summary(model, input_size=(1,3,224,224)))
     data = torch.randn((1, 3, 224, 224))
     out = model(data)
